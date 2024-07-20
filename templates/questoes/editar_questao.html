@@ -1,0 +1,19 @@
+<!-- questoes/templates/questoes/editar_questao.html -->
+
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Editar Questão</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    {{ form.media }}
+</head>
+<body>
+    <h2>Editar Questão</h2>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn">Salvar</button>
+    </form>
+</body>
+</html>

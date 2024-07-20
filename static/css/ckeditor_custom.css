@@ -1,0 +1,37 @@
+/* Estilizando as imagens dentro do editor CKEditor */
+.cke_editable img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Estilizando os botões */
+.btn {
+    background-color: #007bff;
+    color: white;
+    border-radius: 5px;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: white;
+    color: black;
+    border: 2px solid #007bff;
+}
+
+/* Estilizando botões específicos */
+.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #004085;
+}

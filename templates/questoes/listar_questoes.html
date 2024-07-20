@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %}Lista de Questões{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>Lista de Questões</h1>
+    <ul>
+        {% for questao in questoes %}
+            <li>
+                {{ questao.enunciado|safe }} - <a href="{% url 'editar_questao' questao.id %}">Editar</a> <a href="{% url 'excluir_questao' questao.id %}">Excluir</a>
+            </li>
+        {% endfor %}
+    </ul>
+    <form method="post" action="{% url 'recomecar' %}">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-warning">Recomeçar</button>
+    </form>
+</div>
+{% endblock %}

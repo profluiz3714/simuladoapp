@@ -1,0 +1,19 @@
+<!-- questoes/templates/questoes/excluir_questao.html -->
+
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Excluir Questão</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <h2>Excluir Questão</h2>
+    <p>Tem certeza que deseja excluir esta questão?</p>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn">Excluir</button>
+    </form>
+    <a href="{% url 'index' %}" class="btn">Cancelar</a>
+</body>
+</html>

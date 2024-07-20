@@ -1,0 +1,20 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Adicionar Questão</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    {{ form.media }}
+</head>
+<body>
+    <h1>Adicionar Questão</h1>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn">Salvar</button>
+    </form>
+    <br>
+    <a href="{% url 'gerar_simulado' %}" class="btn">Gerar Simulado</a>
+</body>
+</html>
