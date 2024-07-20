@@ -1,12 +1,14 @@
 import os
 from pathlib import Path
+import dj_database_url
+import django_heroku
 
 # Paths
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Security
-SECRET_KEY = 'your-secret-key'
-DEBUG = True
+SECRET_KEY = os.getenv('SECRET_KEY', 'your-secret-key')
+DEBUG = os.getenv('DEBUG', 'False') == 'True'
 ALLOWED_HOSTS = ['simuladoapp-76047fadfbf7.herokuapp.com', 'localhost', '127.0.0.1']
 
 # Installed apps
@@ -34,6 +36,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',  # Adicione este middleware
 ]
 
 # URLs
@@ -61,10 +64,7 @@ WSGI_APPLICATION = 'simuladoapp.wsgi.application'
 
 # Database
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+    'default': dj_database_url.config(default=f'sqlite:///{BASE_DIR / "db.sqlite3"}')
 }
 
 # Password validation
@@ -96,6 +96,7 @@ STATICFILES_DIRS = [
     BASE_DIR / "static",
 ]
 STATIC_ROOT = BASE_DIR / "staticfiles"
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Media files
 MEDIA_URL = '/media/'
@@ -141,3 +142,6 @@ MESSAGE_TAGS = {
 # Login and Logout Redirects
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
+
+# Activate Django-Heroku.
+django_heroku.settings(locals())
