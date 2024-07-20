@@ -8,7 +8,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Security
 SECRET_KEY = os.getenv('DJANGO_SECRET_KEY', 'your-default-secret-key')
 DEBUG = os.getenv('DJANGO_DEBUG', 'False') == 'True'
-ALLOWED_HOSTS = ['simuladoapp-76047fadfbf7.herokuapp.com', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['https://simuladoapp-76047fadfbf7.herokuapp.com/']
 
 # Installed apps
 INSTALLED_APPS = [
