@@ -1,4 +1,3 @@
-import django_heroku
 import os
 from pathlib import Path
 import dj_database_url
@@ -9,7 +8,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Security
 SECRET_KEY = os.getenv('DJANGO_SECRET_KEY', 'your-default-secret-key')
 DEBUG = os.getenv('DJANGO_DEBUG', 'False') == 'True'
-ALLOWED_HOSTS = ['simuladoapp-76047fadfbf7.herokuapp.com']
+ALLOWED_HOSTS = ['*']
 
 # Installed apps
 INSTALLED_APPS = [
@@ -143,5 +142,3 @@ MESSAGE_TAGS = {
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
 
-# Activate Django-Heroku.
-django_heroku.settings(locals())
